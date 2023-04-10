@@ -1,13 +1,13 @@
 {
   "name": "elevator",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "solutions for elevator saga game",
   "main": "index.js",
   "scripts": {
     "test": "test",
     "lint": "gts lint",
     "clean": "gts clean",
-    "compile": "webpack && python3.9 ./postprocess.py",
+    "compile": "webpack && python3 ./postprocess.py",
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
