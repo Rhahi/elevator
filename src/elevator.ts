@@ -1,3 +1,5 @@
+// copied from https://gist.github.com/Medeah/e42c1efef39596109f72
+
 export interface Elevator {
   /** Queue the elevator to go to specified floor number. If you specify true as second argument, the elevator will go to that floor directly, and then go to any other queued floors.*/
   goToFloor: (floor: number, directly?: boolean) => void;
