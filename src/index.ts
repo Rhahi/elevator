@@ -1,16 +1,48 @@
-import {Elevator, Floor} from './elevator';
+import { Elevator, Floor } from './elevator';
 
 function init(elevators: Elevator[], floors: Floor[]) {
-  console.log('hello');
+  const elevator = elevators[0];
 
-  const elevator = elevators[0]; // Let's use the first elevator
+  // pick up passengers in the way
+  const waiting: boolean[] = [false, false, false, false, false];
 
-  // Whenever the elevator is idle (has no more queued destinations) ...
-  elevator.on('idle', () => {
-    // let's go to all the floors (or did we forget one?)
-    elevator.goToFloor(0);
-    elevator.goToFloor(1);
+  for (const floor of floors) {
+    floor.on("up_button_pressed", () => {
+      waiting[floor.floorNum()] = true;
+    });
+    floor.on("down_button_pressed", () => {
+      waiting[floor.floorNum()] = true;
+    });
+  }
+
+  elevator.on("stopped_at_floor", (n: number) => {
+    waiting[n] = false;
   });
+
+  elevator.on("idle", () => {
+    let idx = 0;
+    for (const w of waiting) {
+      if (w) {
+        elevator.goToFloor(idx);
+        break;
+      }
+      idx++;
+    }
+  })
+
+  elevator.on("passing_floor", (n: number) => {
+    if (floors[n].buttonStates.up && elevator.destinationDirection() == "up") {
+      elevator.goToFloor(n, true);
+    }
+    if (floors[n].buttonStates.down && elevator.destinationDirection() == "down") {
+      elevator.goToFloor(n, true);
+    }
+  });
+
+  elevator.on("floor_button_pressed", (n: number) => {
+    elevator.goToFloor(n)
+  });
+
 }
 
 const __submit__ = "";
