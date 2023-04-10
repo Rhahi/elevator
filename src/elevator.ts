@@ -36,8 +36,3 @@ export interface Floor {
   /** State of the up and down button at a floor. "activated" or "" */
   buttonStates: {down: string; up: string};
 }
-
-export interface Submit {
-  init: (elevators: Elevator[], floors: Floor[]) => void;
-  update: (dt: number[], elevators: Elevator[], floors: Floor[]) => void;
-}

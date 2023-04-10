@@ -1,9 +1,7 @@
-import {Elevator, Floor, Submit} from './elevator';
-import {SimpleChannel} from '../node_modules/channel-ts/lib/channel';
+import {Elevator, Floor} from './elevator';
 
 function init(elevators: Elevator[], floors: Floor[]) {
   console.log('hello');
-  const chan = new SimpleChannel<never>();
 
   const elevator = elevators[0]; // Let's use the first elevator
 
