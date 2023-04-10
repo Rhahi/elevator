@@ -10,5 +10,6 @@ function init(elevators: Elevator[], floors: Floor[]) {
     // let's go to all the floors (or did we forget one?)
     elevator.goToFloor(0);
     elevator.goToFloor(1);
+    elevator.goToFloor(2);
   });
 }
