@@ -16,7 +16,8 @@ with open("./build/main-bundle.js") as f:
 lines.pop()  # remove source map
 lines.pop()  # remove semicolon
 assert lines[-1].strip() == "/******/ })()"
-lines[-2] = "init(elevators, floors);\n"
+idx = lines.index('const __submit__ = "";\n')
+lines[idx] = "init(elevators, floors);\n"
 init = "".join(lines)
 update = ""
 
