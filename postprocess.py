@@ -15,8 +15,8 @@ with open("./build/main-bundle.js") as f:
 
 lines.pop()  # remove source map
 lines.pop()  # remove semicolon
-assert lines[-4] == "\n"
-lines[-4] = "init(elevators, floors);"
+assert lines[-1].strip() == "/******/ })()"
+lines[-2] = "init(elevators, floors);\n"
 init = "".join(lines)
 update = ""
 
