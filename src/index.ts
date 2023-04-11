@@ -13,4 +13,4 @@ function init(elevators: Elevator[], floors: Floor[]) {
   });
 }
 
-const __submit__ = "";
+const __submit__ = '';

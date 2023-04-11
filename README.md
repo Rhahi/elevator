@@ -9,6 +9,6 @@ you can import any packages and they will be bundled.
 
 update() function is not supported by automatic post process.
 
-do not modify line `const __submit__ = "";`, this is a find-and-replace
+do not modify line `const __submit__ = '';`, this is a find-and-replace
 line used by the post process.
 
